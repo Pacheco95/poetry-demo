@@ -5,6 +5,7 @@ RUN = poetry run
 
 install:
 	poetry install
+	$(RUN) pre-commit install
 
 clean:
 	@rm -rf .coverage
@@ -26,13 +27,22 @@ coverage:
 	$(RUN) pytest --cov=.
 
 format:
-	$(RUN) autopep8 --in-place --recursive .
+	$(RUN) autopep8 -i .
 	@echo
 
 	$(RUN) isort .
 	@echo
 
 	$(RUN) black .
+
+check-format:
+	$(RUN) autopep8 --diff .
+	@echo
+
+	$(RUN) isort -c .
+	@echo
+
+	$(RUN) black . --diff
 
 lint:
 	$(RUN) flake8 .

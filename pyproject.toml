@@ -23,6 +23,7 @@ black = "^25.1.0"
 flake8 = "^7.3.0"
 flake8-pyproject = "^1.2.3"
 mypy = "^1.17.1"
+pre-commit = "^4.3.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -37,7 +38,6 @@ fail_under = 100
 
 [tool.autopep8]
 max_line_length = 120
-in-place = true
 recursive = true
 aggressive = 3
 
