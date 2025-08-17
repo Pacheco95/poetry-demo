@@ -4,6 +4,7 @@ FIND = find . -not -path "*/.venv/*"
 RUN = poetry run
 
 install:
+	poetry config virtualenvs.in-project true
 	poetry install
 	$(RUN) pre-commit install
 
@@ -13,6 +14,10 @@ clean:
 	@rm -rf dist
 	@rm -rf .mypy_cache
 	@$(FIND) -type d -name "__pycache__" -exec rm -rf {} +
+
+clean-hard: clean
+	@command -v deactivate >/dev/null && deactivate || true
+	@rm -rf .venv
 
 run:
 	$(RUN) fastapi run src/poetry_demo/main.py
