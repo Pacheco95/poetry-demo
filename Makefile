@@ -20,10 +20,10 @@ clean-hard: clean
 	@rm -rf .venv
 
 run:
-	$(RUN) fastapi run src/poetry_demo/main.py
+	$(RUN) fastapi run poetry_demo/main.py
 
 run-dev:
-	$(RUN) fastapi dev src/poetry_demo/main.py
+	$(RUN) fastapi dev poetry_demo/main.py
 
 test:
 	$(RUN) pytest

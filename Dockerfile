@@ -17,7 +17,7 @@ COPY pyproject.toml poetry.lock* ./
 
 RUN poetry install --only main --no-interaction --no-ansi --no-root
 
-COPY src ./src
+COPY poetry_demo ./poetry_demo
 
 FROM python:3.13-slim AS runtime
 
@@ -40,4 +40,4 @@ EXPOSE 8000
 USER appuser
 
 # Run FastAPI with Uvicorn (provided by fastapi[standard])
-CMD ["poetry", "run", "fastapi", "run", "src/poetry_demo/main.py"]
+CMD ["poetry", "run", "fastapi", "run", "poetry_demo/main.py"]
